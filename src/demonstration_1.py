@@ -52,4 +52,35 @@ def top_k_frequent(words, k):
     List[str]
     """
     # Your code here
+    new_map = {}
+    # count = 0
+    for word in words:
+        if word in new_map:
+            new_map[word] += 1
+        else:
+            new_map[word] = 1
+    print(new_map)
+    sorted_items = sorted(new_map, key=lambda x: (-new_map[x], x)) #makes it into an array; x is the key in new_map; now we sort by value
+    print(sorted_items)
+    return sorted_items[:k]
 
+print(top_k_frequent(["lambda", "school", "rules", "lambda", "school", "rocks"], 2))
+print(top_k_frequent(["the", "sky", "is", "cloudy", "the", "the", "the", "cloudy", "is", "is"], 4))
+
+
+#uper
+# input array of strings
+# friquency number k
+# output needs to be sorted by frequency from highest to lowest
+# plan:
+# find the frequencies
+# then can we get k most frequent
+# build a frequency table / dictionary
+# start with an empty dictionary
+# write a for loop anf set the words as keys and the counts of the words as the value
+# if word exists count += 1 
+# else add it to the dictionary 
+# dict.items()
+# list(dict)
+# sort by value 
+# if they are the same value / equal -> sort by key
