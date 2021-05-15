@@ -43,16 +43,34 @@ Explanation:
 Note that 'B' and 'b' are treated as two different characters.
 ```
 """
-def frequency_sort(s: str) -> str:
+
+# Returns count of character in the string
+
+
+def frequency_sort(s):
     """
     Inputs:
     s -> str
 
     Output:
     str
-    """
+   
+     """
     # Your code here
     freq_dict = {}
-    
+    for ch in s:
+        if ch in freq_dict:
+            freq_dict[ch] += 1
+        else:
+            freq_dict[ch] = 1
+    items = sorted(freq_dict.items(), key=lambda kv: kv[1], reverse=True)
+    string = ""
+    for item in items:
+        if item[1] != 0:
+            string = string + item[0]*item[1]
+    return string
 
-    
+
+print(frequency_sort("dddbbb"))
+print(frequency_sort("Bbcc"))
+print(frequency_sort("free"))
